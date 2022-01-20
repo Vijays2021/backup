@@ -1,0 +1,50 @@
+
+C:\Users\D E L L>aws --version
+aws-cli/2.2.15 Python/3.8.8 Windows/10 exe/AMD64 prompt/off
+
+C:\Users\D E L L>aws configure
+
+================================================
+ SNS-Commands
+-----------------------
+
+1.To create a topic
+
+C:\Users\Amarraj>aws sns create-topic  --name topic-cli-1
+
+2.create a subscription in sns :
+
+C:\Users\Amarraj>aws sns subscribe --topic-arn arn:aws:sns:us-east-2:390041611383:topic-cli-1 --protocol email --notification-endpoint 
+
+confirm subscription
+aws sns confirm-subscription --topic-arn arn:aws:sns:us-east-2:784027283399:my-topic26218 --token 
+
+3.To publish a message :
+
+C:\Users\Amarraj>aws sns publish --topic-arn "arn:aws:sns:us-east-2:390041611383:topic-cli-1" --message C://empdetails.txt
+
+get topic attributes
+
+C:\Users\User12>aws sns get-topic-attributes --topic-arn "arn:aws:sns:us-east-2:623734501964:topic26218"
+
+get subscription attributes
+
+C:\Users\User12>aws sns get-subscription-attributes --subscription-arn "arn:aws:sns:us-east-2:623734501964:topic26218:c2060007-0250-4343-b7d2-f9fc26644555"
+
+4.To list SNS topics :
+
+C:\Users\Amarraj>aws sns list-topics 
+
+5.To list of subscriptions :
+
+C:\Users\Amarraj>aws sns list-subscriptions
+
+6. To delete a Topic in sns :
+C:\Users\Amarraj>aws sns delete-topic --topic-arn "arn:aws:sns:us-east-2:390041611383:topic-cli-1"
+
+Cloud Trail
+---------------
+to validate the logs,
+
+aws cloudtrail validate-logs --trail-arn arn:aws:cloudtrail:us-east-2:623734501964:trail/my-trail-demo-1 --start-time 2021-18-11T00:00:00
+

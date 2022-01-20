@@ -1,0 +1,32 @@
+{
+    "user": [
+      {
+        "name": "Vijay ",
+        "mobile": "99999999999",
+        "dept": "Development",
+        "salary": "20000",
+        "id": 1
+      },
+      {
+        "name": "Aravind",
+        "mobile": "88888888888",
+        "dept": "Testing",
+        "salary": "20000",
+        "id": 2
+      },
+      {
+        "name": "Test",
+        "mobile": "0909090",
+        "dept": "ksjkdj",
+        "salary": "9898",
+        "id": 3
+      },
+      {
+        "name": "Rathinaraj",
+        "mobile": "8782738738",
+        "dept": "Development",
+        "salary": "8787877",
+        "id": 4
+      }
+    ]
+  }

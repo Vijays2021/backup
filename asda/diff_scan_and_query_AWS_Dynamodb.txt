@@ -1,0 +1,52 @@
+Query
+--------
+A query operation as specified in DynamoDb documentation:
+
+A query operation searches only primary key attribute values and supports a subset of comparison operators on key attribute values to refine the search process.
+
+Scan 
+-------
+A scan operation scans the entire table. You can specify filters to apply to the results to refine the values returned to you, after the complete scan
+==============================================================
+
+Which is best based on Performance and Cost Considerations. ?
+
+When creating a Dynamodb table select Primary Keys and Local Secondary Indexes (LSIs) so that a Query operation returns the items you want.
+
+Query operations only support an equal operator evaluation of the Primary Key, but conditional (=, <, <=, >, >=, Between, Begin) on the Sort Key.
+
+Scan operations are generally slower and more expensive as the operation has to iterate through each item in your table to get the items you are requesting.
+
+
+
+Example:
+-------------
+Table: CustomerId, AccountType, Country, LastPurchase
+
+Primary Key: CustomerId + AccountType
+
+In this example, you can use a Query operation to get:
+
+	1. A CustomerId with a conditional filter on AccountType
+
+A Scan operation would need to be used to return:
+	1. All Customers with a specific AccountType
+	2. Items based on conditional filters by Country, ie: All Customers from USA
+	3. Items based on conditional filters by LastPurchase, ie All Customers that made a purchase in the last month
+
+To avoid scan operations on frequently used operations creating a Local Secondary Index (LSI) or Global Secondary Index (GSI).
+
+Example:
+------------
+Table: CustomerId, AccountType, Country, LastPurchase
+
+Primary Key: CustomerId + AccountType
+GSI: AccountType + CustomerId
+LSI: CustomerId + LastPurchase
+
+
+In this example a Query operation can allow you to get:
+
+1. A CustomerId with a conditional filter on AccountType
+2. [GSI] A conditional filter on CustomerIds for a specific AccountType
+3. [LSI] A CustomerId with a conditional filter on LastPurchase

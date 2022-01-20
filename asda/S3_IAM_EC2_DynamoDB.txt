@@ -1,0 +1,212 @@
+Banu
+C:\Users\D E L L>aws --version
+aws-cli/2.2.15 Python/3.8.8 Windows/10 exe/AMD64 prompt/off
+
+C:\Users\D E L L>aws configure
+
+====================================================================
+
+S3
+***
+MAKE BUCKET
+--------------------
+
+C:\Users\D E L L>aws s3 mb s3://bucketname --region us-east-1
+
+LIST OF BUCKET
+-----------------------
+
+C:\Users\D E L L>aws s3 ls
+
+COPY OBJECT FROM LOCALDISK TO BUCKET
+------------------------------------------------------------
+
+C:\Users\D E L L>aws s3 cp "path" s3://bucketname
+
+ENABLING VERSIONING
+-----------------------------------
+
+C:\Users\D E L L>aws s3api put-bucket-versioning --bucket bucketname --versioning-configuration Status=Enabled
+
+(UPDATING)AGAIN COPY OBJECT FROM LOCALDISK TO BUCKET
+-------------------------------------------------------------------------------------
+
+C:\Users\D E L L>aws s3 cp "Filepath" s3://bucketname
+
+DELETING THE OBJECT
+---------------------------------
+
+C:\Users\D E L L>aws s3 rm s3://bucketname/objectname with fileextension
+
+DELETING THE BUCKET
+-------------------------------
+
+C:\Users\D E L L>aws s3 rb s3://bucketname
+
+
+ADDITIONAL: (analytics)
+-----------------------------------
+aws s3 mb s3://ap-analytics-bk1
+aws s3 mb s3://ap-analytics-bk1 --region us-east-2
+aws s3 cp Sales.csv s3://analytics-bk1
+aws s3 ls s3://ap-analytics-bk1
+aws s3 ls s3://ap-analytics-bk1 --human-readable --summarize
+aws s3 ls s3://ap-analytics-bk1 --human-readable --summarize > output.txt
+aws s3 mb s3://ap-analytics-bk2
+aws s3 cp  s3://ap-analytics-bk1 s3://ap-analytics-bk2
+aws s3 ls s3://ap-analytics-bk2
+aws s3 cp  s3://ap-analytics-bk1/Sales.csv s3://ap-analytics-bk2
+aws s3 ls s3://ap-analytics-bk2 --human-readable
+aws s3 cp . s3://ap-analytics-bk1 --recursive
+aws s3 cp s3://ap-analytics-bk1 s3://ap-analytics-bk2 --exclude "*.txt" --recursive
+
+aws s3 rm s3://ap-analytics-bk1/Sales.csv
+aws s3 rm s3://ap-analytics-bk1 --recursive
+
+aws s3 rm s3://ap-analytics-bk1 --recursive --exclude "*.csv"
+
+aws s3 sync . s3://ap-analytics-bk1
+
+aws s3api create-multipart-upload --bucket ap-analytics-bk1 --key sales.txt
+
+aws s3api upload-part --bucket ap-analytics-bk1 --key sales.txt --part-number 1 --body sales_tab.txt --upload-id L7Vs5E5tHk_WRWAhrifNM1awS9mUBFnYSRWC7Kb7BUZzoV.a3RzmbT885.3FdVzdw0ZTP7JBJlLEmJLHuS8A8D53XH2Jllwz9r2RVwlBCZccEr54vHX4aoisAhiUhbLb
+
+aws s3api list-parts --bucket ap-analytics-bk1 --key sales.txt  --upload-id L7Vs5E5tHk_WRWAhrifNM1awS9mUBFnYSRWC7Kb7BUZzoV.a3RzmbT885.3FdVzdw0ZTP7JBJlLEmJLHuS8A8D53XH2Jllwz9r2RVwlBCZccEr54vHX4aoisAhiUhbLb 
+
+aws s3api complete-multipart-upload --multipart-upload file://parts.json --bucket ap-analytics-bk1 --key sales.txt  --upload-id L7Vs5E5tHk_WRWAhrifNM1awS9mUBFnYSRWC7Kb7BUZzoV.a3RzmbT885.3FdVzdw0ZTP7JBJlLEmJLHuS8A8D53XH2Jllwz9r2RVwlBCZccEr54vHX4aoisAhiUhbLb
+
+aws s3 cp venue_pipe.txt s3://ap-analytics-bk1 --sse aws:kms --sse-kms-key-id c363bf59-da39-4df6-aa7e-d3de98596ee9
+
+**********************************************************************
+
+IAM
+====
+
+Create User
+aws iam create-user --user-name banu24270
+
+list the groups
+aws iam list-groups
+
+Create Group
+aws iam create-group --group-name Admins
+
+Delete Group
+aws iam delete-group --group-name Admins
+
+Delete User
+aws iam delete-user --user-name banu24270
+
+Create policy
+aws iam create-policy --policy-name my-policy --policy-document file://policy-16
+
+**********************************************************
+
+EC2
+
+1. Create A New Key-Pair to access the Instance Using AWS CLI
+
+aws ec2 create-key-pair --key-name keyname --query 'keymaterial' --output text>keyname.pem
+
+2. securitygroup
+
+aws ec2 create-security-group --group-name securitygraoupname --description "Security Group using CLI" --vpc-id vpc-038482ed02c226cd3
+
+2. Creating In-bound Rules in Security Groups
+
+aws ec2 authorize-security-group-ingress --group-id sg-06cda7fc13f6cb099 --protocol tcp --port 22 --cidr 0.0.0.0/0
+aws ec2 authorize-security-group-ingress --group-id sg-06cda7fc13f6cb099 --protocol tcp --port 80 --cidr 0.0.0.0/0
+aws ec2 describe-security-groups --group-ids sg-06cda7fc13f6cb099
+
+3. Creating ec2 Instance using keyPair and security group
+aws ec2 run-instances --image-id ami-0233c2d874b811deb --instance-type t2.micro --subnet-id subnet-0b19604f8b85ae106 --count 1 --security-group-ids sg-06cda7fc13f6cb099 --key-name keyname
+
+4. After running:
+aws ec2 describe-instances --instance-ids i-0097f8a6b0716d1d8
+
+5. To add Tag for the instance
+aws ec2 create-tags --resources i-0097f8a6b0716d1d8 --tags Key=Name,Value=Linux_server-26216
+
+6. Create Volume
+
+aws ec2 create-volume --volume-type gp2 --size 80 --availability-zone us-east-2b
+
+7. Create Snapshot
+
+aws ec2 create-snapshot --volume-id vol-028ed262ee15c9a3a --description "this is my volume snapshot"
+
+8. To terminate the instance
+aws ec2 terminate-instances --instance-ids i-0097f8a6b0716d1d8
+
+*************************************************************************
+
+			AWS-CLI-Commands for Dynamo-DB
+
+1.To Create a new table in DynamoDB :
+
+C:\Users\Banu>aws dynamodb create-table --table-name Employee-Details --attribute-definitions AttributeName=Empid,AttributeType=S AttributeName=Name,AttributeType=S --key-schema AttributeName=Empid,KeyType=HASH AttributeName=Name,KeyType=RANGE --
+
+2.To list the tables in dynamo table
+
+C:\Users\Banu>aws dynamodb list-tables
+
+3.To Describe the table:
+
+C:\Users\Banu>aws dynamodb describe-table --table-name Employee-Details
+
+4.To Update the table:
+
+C:\Users\Banu>aws dynamodb update-table --table-name Employee-Details --stream-specification StreamEnabled=true,StreamViewType=NEW_IMAGE
+
+5.Put item into the database:
+
+C:\Users\Banu>aws dynamodb put-item --table-name Employee-Details --item file://empdetails.json --return-consumed-capacity TOTAL
+
+6.Get item from database:
+
+C:\Users\Banu>aws dynamodb get-item --table-name Employee-Details --key file://empdetails.json
+
+7.Delete item:
+
+aws dynamodb delete-item --table-name Employee-Details --key file://empdetails.json
+
+8.Create global table:
+
+C:\Users\Banu>aws dynamodb create-global-table --global-table-name Employee-Details --replication-group RegionName=us-east-2 RegionName=us-east-1 --region us-east-2
+
+9.update-time-to-live:
+
+aws dynamodb update-time-to-live --table-name Employee-Details --time-to-live-specification Enabled=true,AttributeName=ttl
+
+******************************************************************
+
+CLI-Commands ofr S3(Simple Storage Service)
+
+1.To list the buckets in S3: 
+
+C:\Users\Banu>aws s3 ls
+
+
+2.To create a new bucket
+
+C:\Users\Banu>aws s3 mb s3://bucket-26202
+
+3. To upload a new file in S3:
+
+C:\Users\Banu>aws s3 cp "C:\Users\Banu\Desktop\AWS-practice\csv-Files\EmpDetails.csv" s3://bucket-26202/
+
+4.To remove a file from S3 bucket
+
+C:\Users\Banu>aws s3 rm s3://bucket-26202/EmpDetails.csv
+
+5.To an object from bucket to anathor bucket
+
+C:\Users\Banu>aws s3 mv s3://s3-dynamodb-lambda/country.csv s3://bucket-26202/country1.csv
+
+*****************************************************************************
+Cloud Trail
+---------------
+to validate the logs,
+
+aws cloudtrail validate-logs --trail-arn arn:aws:cloudtrail:us-east-2:623734501964:trail/my-trail-demo-1 --start-time 2021-18-11T00:00:00
+

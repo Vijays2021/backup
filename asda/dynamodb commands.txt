@@ -1,0 +1,38 @@
+aws dynamodb batch-write-item --request-items file://videos.json
+---------------------------
+
+aws dynamodb create-table --table-name videos --attribute-definitions AttributeName=authorid,AttributeType=S AttributeName=videoid,AttributeType=S  --key-schema AttributeName=authorid,KeyType=HASH AttributeName=videoid,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+
+aws dynamodb list-tables 
+
+aws dynamodb describe-table --table-name videos 
+
+aws dynamodb update-table --table-name videos --sse-specification    Enabled=true,SSEType="KMS",KMSMasterKeyId="c363bf59-da39-4df6-aa7e-d3de98596ee9" 
+
+aws dynamodb describe-table --table-name videos 
+
+aws dynamodb put-item --table-name videos --item file://video.json --return-consumed-capacity TOTAL
+
+aws dynamodb get-item --table-name videos --key file://videokey.json
+aws dynamodb get-item --table-name videos --key file://videokey.json --projection-expression "title,category"
+
+aws dynamodb batch-write-item --request-items file://batchvideos.json 
+ 
+aws dynamodb delete-item --table-name videos --key file://videokey.json
+
+aws dynamodb query --table-name videos --key-condition-expression "authorid=:author" --expression-attribute-values file://querykey.json
+
+aws dynamodb query --table-name videos --key-condition-expression "authorid=:author" --filter-expression "category=:category" --expression-attribute-values file://querykey.json --max-items 2
+
+aws dynamodb scan --table-name videos 
+
+aws dynamodb scan --table-name videos  --filter-expression "category=:category" --expression-attribute-values file://querykey.json
+
+Global secondary index.
+
+aws dynamodb update-table --table-name videos --attribute-definitions AttributeName=authorid,AttributeType=S AttributeName=videoid,AttributeType=S AttributeName=title,AttributeType=S AttributeName=category,AttributeType=S --global-secondary-index-updates file://index.json
+
+
+aws dynamodb query --table-name videos --index-name titleindex --key-condition-expression "title=:title" --expression-attribute-values file://keyvalue.json
+
+

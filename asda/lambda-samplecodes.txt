@@ -1,0 +1,198 @@
+Lambda code:
+-----------------
+
+Read the dynamic value from test event (python)
+----------------------------------------------------------------
+
+def lambda_handler(event, context):
+    message = 'Hello {} {}!'.format(event['first_name'], event['last_name'])  
+    return { 
+        'message' : message
+    }
+
+test:
+-------
+{
+    "first_name": "John",
+    "last_name": "Smith"
+}
+
+=====================================================
+Python - 
+
+import json
+import boto3
+
+sns = boto3.client('sns')
+
+def lambda_handler(event,context):
+    print("Input Event :",event)
+    
+    message= event['Records'][0]['dynamodb']['NewImage']
+   
+    response = sns.publish(
+                        TopicArn="arn:aws:sns:us-east-2:623734501964:topic-26218",
+                        Message=json.dumps(message),
+                        Subject='seed4 table items',
+                    )
+                    
+    print("Output :",message)
+    return(message)
+=============================================
+Python - 
+
+import json
+import boto3
+
+glueClient = client = boto3.client('glue')
+
+def lambda_handler(event, context):
+    response = glueClient.start_job_run(JobName = 'partition-26202')
+    return 'Job Start'
+=============================================
+Python - Write item in dynamodb
+---------------------------------------------
+import json
+import boto3
+dynamodb=boto3.resource('dynamodb')
+table=dynamodb.Table('videos')
+def lambda_handler(event, context):
+    print(event)
+    # TODO implement
+    table.put_item(Item=event)
+    return {"code":200,"messege":"Video data has inserted successfully!!!"}
+        
+================================
+Python - Read item in dynamodb
+---------------------------------------------
+
+import boto3
+
+dynamodb = boto3.resource('dynamodb')
+
+table = dynamodb.Table('videos')
+
+
+def lambda_handler(event, context):
+    
+    authorid = event['authorid']
+    videoid = event['videoid']
+    
+    response = table.get_item(Key={'authorid': authorid, 'videoid': videoid})
+    
+    print(response,'Get Item From Dynamodb...')
+    
+    if 'Item' in response:
+       
+         return response['Item']
+    
+    else:
+        
+        return {'Error': 'video data not Found'}
+
+*************
+nodejs
+---------
+const aws = require("aws-sdk");
+const docClient =  new aws.DynamoDB.DocumentClient({region: 'us-east-2'});
+
+exports.handler = (event, context,callback)=>{
+	
+var params= {
+TableName: 'customers',
+Key:{
+	"customercode":'c1001'
+}
+};
+
+docClient.get(params, (err,data)=>{
+	if(err)
+		callback(err, null);
+	else
+		callback(null,data);
+});
+}
+
+
+
+========================================
+Python - Write item in dynamodb
+---------------------------------------------
+import json
+import boto3
+dynamodb=boto3.resource('dynamodb')
+table=dynamodb.Table('StudentData')
+def lambda_handler(event, context):
+    print(event)
+    # TODO implement
+    table.put_item(Item=event)
+    return {"code":200,"messege":"Student data has inserted successfully!!!"}
+        
+========================================
+Python - Read data from S3 and Write it as an item in dynamodb
+----------------------------------------------------------------------------------
+import json
+import boto3
+
+s3_client=boto3.client('s3')
+dynamodb=boto3.resource('dynamodb')
+table=dynamodb.Table('datafroms3')
+
+def lambda_handler(event, context):
+    try :
+            bucket_name=event["Records"][0]["s3"]["bucket"]["name"]
+            s3_file_name=event["Records"][0]["s3"]["object"]["key"]
+            
+            response=s3_client.get_object(Bucket=bucket_name,Key=s3_file_name)
+            data=response['Body'].read().decode('utf-8')
+            print(data)
+            country=data.split("\n")
+            for code in country :
+                code=code.split(",")
+                table.put_item(
+                    Item={
+                        "code":str(code[0]),
+                        "Country":str(code[1])
+                        
+                      
+                    }
+                    )
+                
+    except Exception as err :
+        print(err)
+   
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Hello from Lambda!')
+    }
+=======================================================
+nodejs - wrtie the oject of s3 into dynamodb table
+-----------------------------------------------------------------
+
+const aws = require("aws-sdk");
+const docClient =  new aws.DynamoDB.DocumentClient({region: 'us-east-2'});
+
+exports.handler = (event, context,callback)=>{
+	const bucket = event.Records[0].s3.bucket.name;
+	const filename = decodeURIComponent(event.Records[0].s3.object.key.replace(/\+/g, ' '));
+
+var data = {
+Item:{
+date: Date.now(),
+bucketname: bucket,
+objectname:filename
+},
+TableName: 'bucket-logs'
+};
+
+docClient.put(data, (err,resp)=>{
+	if(err)
+		callback(err, null);
+	else
+		callback(null,resp);
+});
+}
+});
+}
+
+===========================================================
