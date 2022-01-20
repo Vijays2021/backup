@@ -1,0 +1,107 @@
+Converting Arrays to Strings
+The JavaScript method toString() converts an array to a string of (comma separated) array values.
+
+Example
+const actors = ["Vijay", "Ajith", "Vikram", "Surya"];
+document.getElementById("demo").innerHTML = actors.toString(); // Vijay,Ajith,Vikram,Surya
+
+The join() method also joins all array elements into a string.
+
+Example
+const actors = ["Vijay", "Ajith", "Vikram", "Surya"];
+document.getElementById("demo").innerHTML = actors.join(" * "); // Vijay * Ajith * Vikram * Surya
+
+Popping and Pushing
+When you work with arrays, it is easy to remove elements and add new elements.
+
+Popping
+The pop() method removes the last element from an array:
+
+Example
+const actors = ["Vijay", "Ajith", "Vikram", "Surya"];
+actors.pop();  // Removes "Surya" from actors
+
+Example
+const actors = ["Vijay", "Ajith", "Vikram", "Surya"];
+let x = actors.pop();  // x = "Surya"
+
+Pushing
+The push() method adds a new element to an array (at the end):
+
+Example
+const actors = ["Vijay", "Ajith", "Vikram", "Surya"];
+actors.push("Dhanush");   // Adds "Dhanush" to actors
+The push() method returns the new array length:
+
+Example
+const actors = ["Vijay", "Ajith", "Vikram", "Surya"];
+let x = actors.push("Dhanush");   //  x = 5
+
+Shifting Elements
+
+The shift() method removes the first array element and "shifts" all other elements to a lower index.
+
+Example
+const actors = ["Vijay", "Ajith", "Vikram", "Surya"];
+actors.shift();   // Removes "Vijay" from actors
+
+Example
+const actors = ["Vijay", "Ajith", "Vikram", "Surya"];
+let x = actors.shift();    // x = "Vijay"
+
+Example
+const actors = ["Vijay", "Ajith", "Vikram", "Surya"];
+actors.unshift("Dhanush");    // Adds "Dhanush" to fruits
+
+Example
+const actors = ["Vijay", "Ajith", "Vikram", "Surya"];
+actors.unshift("Dhanush");    // x = 5
+
+Changing Elements
+Array elements are accessed using their index number:
+
+Example
+const actors = ["Vijay", "Ajith", "Vikram", "Surya"];
+actors[0] = "Dhanush";        // Changes the first element of actors to "Dhanush"
+
+Example
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits[fruits.length] = "Kiwi";          // Appends "Kiwi" to fruits
+
+
+Splicing an Array
+
+Example
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 0, "Lemon", "Kiwi"); // (position, delete count, items to be added)
+
+Merging (Concatenating) Arrays
+
+Example (Merging Two Arrays)
+const myGirls = ["Cecilie", "Lone"];
+const myBoys = ["Emil", "Tobias", "Linus"];
+
+// Concatenate (join) myGirls and myBoys
+const myChildren = myGirls.concat(myBoys);  
+
+Example (Merging Three Arrays)
+const arr1 = ["Cecilie", "Lone"];
+const arr2 = ["Emil", "Tobias", "Linus"];
+const arr3 = ["Robin", "Morgan"];
+const myChildren = arr1.concat(arr2, arr3);
+
+Example (Merging an Array with Values)
+const arr1 = ["Emil", "Tobias", "Linus"];
+const myChildren = arr1.concat("Peter"); 
+
+
+Slicing an Array
+The slice() method slices out a piece of an array into a new array.
+
+This example slices out a part of an array starting from array element 1 ("Orange"):
+
+Example
+const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+const citrus = fruits.slice(1);
+
+

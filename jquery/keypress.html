@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Keypress Event in jQuery</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<style>
+    p{
+        padding: 10px;
+        background: lightgreen;
+        display: none;
+    }
+    div{
+        margin: 20px 0;
+    }
+</style>
+<script>
+// keypress, keyup, keydown
+$(document).ready(function(){
+    var i = 0;
+    $('input[type="text"]').keypress(function(){
+        $("span").text(i += 1);
+        $("p").show().fadeOut();
+    });
+});
+</script>
+</head>
+<body>
+    <input type="text">
+    <div>Keypress: <span>0</span></div>
+	<div><strong>Note:</strong> Enter something inside the input box and see the result.</div>
+    <p>Keypress is triggered.</p>
+</body>
+</html>

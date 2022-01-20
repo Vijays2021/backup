@@ -1,0 +1,35 @@
+1. Provide definition for EmailValidation to satisfy the below conditions
+boolean emailValidation(String email)
+{
+....
+....    new RegExp('^[^\.|@][a-z0-9]+@[a-z]+\.[a-z]*[m|n]$');
+}
+1) Email id should not start with '.' and '@' ... // [^\.|@]
+2) Email id should end with either 'm' or 'n'... // [m|n+$]
+3) Email id should have '@' only once... // @+
+4) Should have '.' after '@' but not immediately... // \.+
+5) '_' should come before '@' symbol ... //  _* 
+6) Length should be minimum 10 maximum 30
+
+2. Create a function that takes a sentence as input and does the following validation
+(a) Length of the sentence must me minimum 10
+(b) Sentence should have at-least one space.
+(c) Sentence should not have dot in between.
+(d) Should not start and end with spaces
+(e) Must end with dot
+
+3. Create a function that takes a sentence as parameter and return the length of the
+second word in the sentence.
+
+4. Write a function validateIPaddress that accepts an ipAddress (string) as an input and
+does the following validations
+(a) Length should be minimum 7 and maximum 15
+(b) Should not start and end with dot
+(c) Should have exactly 3 dots
+(d) Dots should not be in consecutive positions.
+(e) Should not permit alphabets and special characters
+
+5. Provide logic to validate a given a password whether the password is valid or not
+(a) Length should be minimum 10 characters and maximum 50 characters
+(b) Should not start and end with spaces
+(c) Should not contain any special character other than underscore ( _ )

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>email-validation</title>
+<link rel='stylesheet' href='formstyle.css' type='text/css' >      
+</head>
+<body onload='document.f1.text1.focus()'>
+<div class="mail">
+<h2>Enter an Email and Submit</h2>
+<form name="f1"> 
+<div>
+<input type='text' name='text1'/>
+&nbsp;
+</div>
+<br>
+<div class="submit"><input type="submit" name="submit" onclick="ValidateEmail(document.f1.text1)"/></div>
+&nbsp;
+</div>
+</form>
+</div>
+ 
+<script>
+function ValidateEmail(){
+var validformat = /(^\s){10,}(\s+).\b$)/ 
+if (document.f1.text1.value) == validformat{
+alert("Valid");
+}
+else{
+alert("Invalid");
+}
+};
+
+
+/*function ValidateEmail(inputText) // (/^\w+ [^.@][m|n\b$][@+][.+?!@]{10,30}$/ [a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$
+{
+var mailformat = ('^[^\.|@][a-z]+ @[a-z]+\.[a-z]?[m|n]$')
+if(inputText.value == mailformat)
+{
+alert("Valid email address!");
+document.f1.text1.focus();
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+document.f1.text1.focus();
+return false;
+}
+};*/
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript" >
+//click and double click
+/*$(document).ready(() => {
+    $("div").dblclick(function () {
+        $(this).hide();
+    });
+});*/
+
+
+$(document).ready(() => {
+    $("#div1").mouseenter(() => {
+        alert("You entered the squares!");
+    });
+    $("#div2").mouseleave(() => {
+        alert("Bye! You now left the squares!");
+    });
+    $("#div3").mousedown(() => {
+        alert("Mouse down over the squares!");
+    });
+    $("#div4").mouseup(() => {
+        alert("Mouse up over squares!");
+    });
+});
+
+</script>
+</head>
+<body>
+
+<p>Double-click on the squares to make them disappear.</p>
+<div id="div1" style="background: #229; height: 100px; width: 100px"></div>
+<div id="div2" style="background: #235; height: 100px; width: 100px"></div>
+<div id="div3" style="background: #275; height: 100px; width: 100px"></div>
+<div id="div4" style="background: #245; height: 100px; width: 100px"></div>
+
+
+</body>
+</html>

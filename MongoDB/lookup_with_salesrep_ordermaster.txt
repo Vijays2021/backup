@@ -1,0 +1,79 @@
+db.createCollection("salesrep")
+
+db.salesrep.insertMany([{salesrepid:"SR01",salesrepname:"Arun"},
+                        {salesrepid:"SR02",salesrepname:"Rishi"},
+                       {salesrepid:"SR03",salesrepname:"Dhiya"}])
+db.salesrep.find({})     
+
+db.createCollection("ordermaster")
+
+db.ordermaster.insertMany([{ordercode:"OR01",salesrepid:"SR01"},amt:34322
+                        {ordercode:"OR02",salesrepid:"SR02"},
+                        {ordercode:"OR04",salesrepid:"SR01"}])
+                        
+db.ordermaster.find({})               
+
+SELECT SREP.salesrepid,SREP.salesrepname,COUNT(ordercode)
+FROM salesrep SREP
+JOIN ordermaster ORM
+ON SREP.salesrepid = ORM.salesrepid
+GROUP BY SREP.salesrepid,SREP.salesrepname
+HAVING COUNT(ordercode) = 2
+
+
+Counting:
+db.ordermaster.aggregate([{$group: {_id:"$salesrepid",countoforders: {$sum: 1}}}])
+
+Lookup:
+db.ordermaster.aggregate([
+    
+    {
+        $lookup:
+        {
+            from:"salesrep",
+            localField:"salesrepid",
+            foreignField:"salesrepid",
+            as: "salesrep_details"
+        }
+    }
+    ])
+    
+    
+Solution
+--------
+db.ordermaster.aggregate([
+    {$group: {_id:"$salesrepid",countoforders: {$sum: 1}}},
+    {"$match":{"countoforders":{$eq:2}}},
+    {
+        $lookup:
+        {
+            from:"salesrep",
+            localField:"_id",
+            foreignField:"salesrepid",
+            as: "salesrep_details"
+        }
+    }
+    
+    ])
+    
+   db.ordermaster.aggregate([
+    {$group: {_id:"$salesrepid",countoforders: {$sum: 1}}},
+    {"$match":{"countoforders":{$eq:2}}},
+    {
+        $lookup:
+        {
+            from:"salesrep",
+            localField:"_id",
+            foreignField:"salesrepid",
+            as: "salesrep_details"
+        }
+    },
+    {$out:"SalesReport"}
+    
+    ])
+ 
+    
+
+
+       
+     {"$project":{"salesrepname":"$salesrep_details.salesrepname","Nooforders":"$countoforders"}}

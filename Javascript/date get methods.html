@@ -1,0 +1,46 @@
+JavaScript Get Date Methods
+
+Method	Description
+getFullYear()	Get the year as a four digit number (yyyy)
+getMonth()	Get the month as a number (0-11)
+getDate()	Get the day as a number (1-31)
+getHours()	Get the hour (0-23)
+getMinutes()	Get the minute (0-59)
+getSeconds()	Get the second (0-59)
+getMilliseconds()	Get the millisecond (0-999)
+getTime()	Get the time (milliseconds since January 1, 1970)
+getDay()	Get the weekday as a number (0-6)
+Date.now()	Get the time. 
+
+The getTime() Method
+
+Example
+const d = new Date();
+document.getElementById("demo").innerHTML = d.getTime();
+document.getElementById("demo").innerHTML = d.getFullYear();
+document.getElementById("demo").innerHTML = d.getMonth() + 1; // 0-11
+
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+document.getElementById("demo").innerHTML = months[d.getMonth()];
+
+const d = new Date();
+document.getElementById("demo").innerHTML = d.getDate();
+document.getElementById("demo").innerHTML = d.getHours();
+document.getElementById("demo").innerHTML = d.getMinutes();
+document.getElementById("demo").innerHTML = d.getSeconds();
+document.getElementById("demo").innerHTML = d.getMilliseconds();
+document.getElementById("demo").innerHTML = d.getDay();
+
+const d = new Date();
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+document.getElementById("demo").innerHTML = days[d.getDay()];
+UTC Date Methods
+
+getUTCDate()	Same as getDate(), but returns the UTC date
+getUTCDay()	Same as getDay(), but returns the UTC day
+getUTCFullYear()	Same as getFullYear(), but returns the UTC year
+getUTCHours()	Same as getHours(), but returns the UTC hour
+getUTCMilliseconds()	Same as getMilliseconds(), but returns the UTC milliseconds
+getUTCMinutes()	Same as getMinutes(), but returns the UTC minutes
+getUTCMonth()	Same as getMonth(), but returns the UTC month
+getUTCSeconds()	Same as getSeconds(), but returns the UTC seconds

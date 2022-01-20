@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<title>Exercise 3</title>
+<script>
+function myFunction() {
+var units, charge, diff, frst200, diff2, for500, diff3, for1000, above1000;
+units = prompt("Enter the units:", "");// units =600
+if(units >200 || units >500 || units >1000{
+if(units>200){
+diff = units -200;// 400
+frst200 = units - diff //200
+else if (units>500){ 
+diff2 = units - 500; //100
+for500 = diff - diff2 // 400 - 100 //300
+}
+else if (units<=1000){
+diff3 = units - 1000; //400
+for1000 = diff2 - diff3 // 100 -400 // 300
+}
+else if (units >1000){
+above1000 = units - (for500 + frst200 + for1000)//200
+}
+
+else {
+charge = units;
+}
+
+// charge calculation
+if(units >200 && units <=500){
+charge = frst200 + diff*2;
+}
+else if (units > 500 && units <=1000){
+charge = frst200 + for500*5;
+}
+
+else if (units > 1000){
+charge = frst200 + for500*5 + for1000*10;
+}
+
+
+</script>
+</head>
+<body>
+<p id="demo">
+</p>
+<script>
+document.getElementById("demo").innerHTML= myFunction();
+document.getElementById("demo").innerHTML= charge;
+</script>
+</body>
+</html>

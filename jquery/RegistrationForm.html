@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+	<title>Registration Form</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="formvalidation.js" ></script>
+</head>
+<body>
+	<h2>Registration Form</h2>
+	<form name="registrationForm" action="#" method="post">
+		<table>
+			<tr>
+				<td>Full Name</td>
+				<td><input type="text" id="fullName" name="fullName"></td>
+				<td><span id="fullnameErrorMsg"></span></td>
+			</tr>
+			<tr>
+				<td>User Name</td>
+				<td><input type="text" id="userName"></td>
+				<td><span id="usernameErrorMsg"></span></td>
+			</tr>
+			
+			<tr>
+				<td>Password</td>
+				<td><input type="password" id="password"></td>
+				<td><span id="passworderrormsg"></span></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type="text" id="email"></td>
+				<td><span id="emailerrormsg"></span></td>
+			</tr>
+			<tr>
+				<td>Contact No</td>
+				<td><input type="text" id="contactNo"></td>
+				<td><span id="contactnoerrormsg"></span></td>
+			</tr>
+			<tr>
+				<td>Education Qualification</td>
+				<td><select id="education">
+						<option value="choose">--choose--</option>
+						<option value="BE">BE</option>
+						<option value="BSC">BSC</option>
+						<option value="ME">ME</option>
+						<option value="MSC">MSC</option>
+					</select>
+				</td>
+				<td><span id="educationerrormsg"></span></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>
+					<input type="radio" id="gender" value="male"> Male
+					<input type="radio" id="gender" value="female"> Female
+				</td>
+				<td><span id="gendererrormsg"></span></td>
+			</tr>
+			<tr>
+				<td>City</td>
+				<td><input type="text" id="city"></td>
+				<td><span id="cityerrormsg"></span></td>
+			</tr>
+			<tr>
+				<td>State</td>
+				<td><input type="text" id="state"></td>
+				<td><span id="stateerrormsg"></span></td>
+			</tr>
+			<tr>
+				<td>Zipcode</td>
+				<td><input type="text" id="zipcode"></td>
+				<td><span id="zipcodeerrormsg"></span></td>
+			</tr>
+			<tr>
+				<td><input type="submit" id="submit" value="Register"></td>
+				<td><input type="reset" value="Reset"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

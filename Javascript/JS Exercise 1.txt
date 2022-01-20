@@ -1,0 +1,42 @@
+1. An employee is considered for on-site depending on these conditions 
+/(i) An employee Should have Passport 
+(ii) Communication should be good 
+(iii) His training feedback should be good 
+(iv) Should be at-least 2years experienced. 
+(v) Age should be greater than or equal to 23. 
+Using above conditions, check if an employee is eligible to go to on-site or not. 
+
+2. Tax for an employee is based on following constraints. 
+(i) If the salary is greater than 10,00,000 per annum, then tax is 30% 
+(ii) If the salary is greater than 5,00,000 per annum, then tax is 20% 
+(iii) In other cases tax is 5%. 
+Note: Housing Loan EMI and Education Loan EMI should be considered and can be deducted from salary before calculating tax. 
+
+3. Calculate electricity bill for following constraints. 
+(i) If units exceeds 1000, then charge Rs.10/- per unit. 
+(ii) If units exceeds 500, then charge Rs.5/- per unit. 
+(iii) If units exceeds 200, then charge Rs.2/- per unit. 
+/(iv) In other cases charge Rs.1/- per unit.
+
+
+4. Implement the following logic to arrive at the loan eligibility for an employee: 
+(a) For an unmarried permanent job holder, if the service has been for 30 years or more, the loan amount is Rs.50,000; 
+otherwise the loan amount is Rs.25,000 
+(b) For a married permanent job holder, if the service has been for 30 years or more, the loan amount is Rs.60,000; 
+otherwise the loan amount is Rs.35,000 
+(c) For temporary job holder, the loan amount is Rs.10,000 
+
+Test the application using the below given test cases 
+(a) a married temporary job holder 
+(b) an unmarried temporary job holder 
+(c) a temporary job holder with 30 years of service 
+(d) a married permanent job holder with 30 years of service 
+(e) an unmarried permanent job holder with 30 years service
+(f) a married permanent job holder with 25 years service.
+
+5. Implement the following logic:(DO NOT use logical operators) 
+The mode of transport for dispatching materials should be selected on the following basis: 
+(a) If priority is not urgent and the weight is less than or equal to 5 Kg, dispatch by post 
+(b) If priority is not urgent and the weight is more than 5 Kg, select a lorry if the distance is less than or equal to 250 Km. 
+(c) If the priority is urgent and distance is less than 50 Km and weight is less than 100 Kg, select a van 
+(d) In all other cases, use a train

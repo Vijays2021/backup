@@ -1,0 +1,70 @@
+2. Create a function that takes a sentence as input and does the following validation
+(a) Length of the sentence must me minimum 10 // {}
+(b) Sentence should have at-least one space.// s
+(c) Sentence should not have dot in between.//
+(d) Should not start and end with spaces // !
+(e) Must end with dot // $
+
+function myFunction(){
+var text = propmt("Please enter:");  ('[^\s$](a-b){10,}(\s+)\.$')
+var validformat = ('[^\s$](a-b){10,}(\s+)\.$')
+if text === validformat{
+alert("Valid");
+}
+else{
+printError("Invalid");
+}
+}
+
+3.Create a function that takes a sentence as parameter and return the length of the
+second word in the sentence.
+
+function myFunction()
+{
+var text = propmt("Please enter:"); // "I am Vijay"
+var secondword;
+
+secondword = text.split(" "); // Converting a String to an Array
+return secondword[1].length ;
+}
+
+4. Write a function validateIPaddress that accepts an ipAddress (string) as an input and
+does the following validations
+(a) Length should be minimum 7 and maximum 15
+(b) Should not start and end with dot
+(c) Should have exactly 3 dots
+(d) Dots should not be in consecutive positions.
+(e) Should not permit alphabets and special character
+
+function myFunction()
+{
+var text = propmt("Enter your IP address:"); 
+var validformat = /^[^\.$]{7,15}\d$
+
+if text === validformat{
+alert("Valid");
+}
+else{
+printError("Invalid");
+}
+}
+
+
+
+
+5. Provide logic to validate a given a password whether the password is valid or not
+(a) Length should be minimum 10 characters and maximum 50 characters
+(b) Should not start and end with spaces
+(c) Should not contain any special character other than underscore ( _ )
+
+
+var pwd = prompt("Enter your password");
+validformat = /^[^\s$]{10,50}\_[^* | \ " : < > [ ] { } ` \ ( ) '' ; @ & $]+$/
+
+if pwd === validformat{
+alert("Valid");
+}
+else{
+printError("Invalid");
+}
+}

@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<style>
+body{ 
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  }
+  form .button{
+   height: 45px;
+   margin: 35px 0
+ }
+ form .button input{
+   height: 100%;
+   width: 30%;
+   border-radius: 5px;
+   border: none;
+   padding-left: 20px;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 10.3s ease;
+   background: linear-gradient(135deg, green, yellow);
+ }
+ form .button input:hover{
+   transform: scale(0.99);
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  }
+</style>
+<title>Tax calculation</title>
+</head>
+<body>
+<p>Click the button to enter the required details.</p>
+<br> <br> &nbsp
+<form>
+<div class="button">
+          <input value="Click" onclick="myFunction()">
+</form>
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var A = prompt("Please enter your Salary per annum", "");
+  var B = prompt("Please enter your Housing loan EMI ", "");
+  var C = prompt("Please enter your Education loan EMI ", "");
+  var salary;
+  var greeting;
+  salary = A - (B+C);
+  if (salary > 1000000) {
+     greeting = "Your tax is 30%";}
+	else if (salary > 500000) {
+	greeting = "Your tax is 20%";}
+	else {
+	greeting = "Your tax is 5%";}
+    document.getElementById("demo").innerHTML = greeting;
+  
+}
+</script>
+</body>
+</html>

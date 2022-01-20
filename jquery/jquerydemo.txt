@@ -1,0 +1,30 @@
+$(document).ready(function(){
+	//used id selector
+	$("#hide").click(function(){
+		$("p").hide();
+	});
+	$("#show").click(function(){
+		$("p").show();
+	});
+	
+	//used class selector
+	$(".hide").click(function(){
+		$("p").hide();
+	});
+	$(".show").click(function(){
+		$("p").show();
+	});
+	
+	$("#toggle").click(function(){
+		$("#para1").toggle();
+	});
+	
+	$("button").click(function(){
+		$("p").slideDown();
+	});
+	
+	$("#fadeIn").click(function(){
+		$("p").fadeOut(5000);
+	});
+	
+});

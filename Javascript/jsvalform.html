@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Form</title>
+     <link rel="stylesheet" href="form validate.css"> 
+
+</head>
+<body>
+<form name="myForm" onsubmit="return validateForm()">
+    <h2>Registration Form</h2>
+    <div class="row">
+        <label>Username</label>
+        <input type="text" id="userName">
+        <div class="error" id="nameErr"></div>
+    </div>
+	<div class="row">
+        <label>Password</label>
+        <input type="password" name="password" maxlength="8">
+        <div class="error" id="pwdErr"></div>
+    </div>
+	<div class="row">
+        <label>Email Address</label>
+        <input type="text" name="email">
+        <div class="error" id="emailErr"></div>
+    </div>
+	<div class="row">
+        <label>Occupation</label>
+        <select name="Occupation" >
+            <option>--Choose--</option>
+            <option>self-employed</option>
+            <option>Unemployed</option>
+            <option>Others</option>
+        </select> 
+        <div class="error" id="occupationErr"></div>
+    </div>
+	<div class="row">            
+ <label for="education">Educational Qualification</label>
+  <select id="education" name="education">
+  <option value ="">--Choose-- </option>
+    <option>BCA</option>
+    <option>BE</option>
+    <option>Bsc</option>
+    <option>MCA</option>
+  </select><br><br>
+        <div class="error" id="educationErr"></div>
+    </div>
+	<div class="row">
+        <label>Gender</label>
+        <div class="form-inline">
+            <label><input type="radio" id="gender" name="gender" value="male" > Male</label>
+            <label><input type="radio" id="gender" name="gender" value="female" > Female</label> 
+        </div>
+        <div class="error" id="genderErr"></div>
+    </div>
+<div class="row">
+        <label>Hobbies</label>
+        <div class="form-inline">
+            <label><input type="checkbox" name="hobbies[]" value="singing"> Singing</label>
+            <label><input type="checkbox" name="hobbies[]" value="cooking"> Cooking</label>
+            <label><input type="checkbox" name="hobbies[]" value="swimming"> Swimming</label>
+			<label><input type="checkbox" name="hobbies[]" value="running"> Running</label>
+            <label><input type="checkbox" name="hobbies[]" value="dancing"> Dancing</label>
+        </div>
+    </div>  
+<div class="error" id="hobbiesErr"></div>
+    </div>	
+	<div class="row">
+        <label>Choose Image</label>
+        <input type="file" id="mFile" >
+        <div class="error" id="fileErr"></div>
+    </div>
+<div class="row">
+        <input type="submit" value="Register">
+    </div>
+	
+	<div class="row">
+        <input type="reset" value="clear">
+    </div>
+	</form>
+	<script src=" formvalidate.js"></script>
+	</html>

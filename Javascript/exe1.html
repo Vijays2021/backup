@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+form{
+   height: 45px;
+   margin: 35px;
+   height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   text-align: left;
+   color: black;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 2px;
+   cursor: pointer;
+   }
+</style>
+<script type="text/javascript">
+function onsite(){
+var passport=document.f1.pass.value;
+var communication=document.f1.comm.value;
+var goodfeedback=document.f1.feed.value;
+var experience=document.f1.exp.value;
+var age=document.f1.ag.value;
+if(_.isEqual(passport, pass)) && _.isEqual(communication, comm) && _.isEqual(goodfeedback, feed) && (experience >= 2) && (age>=23){
+alert("Eligible");
+}
+else{
+alert("Not eligible");
+return false;
+}
+}
+</script>
+</head>
+<body>
+<form name= "f1" action="exe11.jsp" onsubmit= "return onsite()">
+An employee should have passport:
+
+<input type="radio" name="pass" value="Yes" required>Yes &nbsp
+<input type="radio" name="pass" value="No" required>No &nbsp
+<br/> 
+
+Communication should be good:
+<input type="radio" name="comm" value="Yes"required>Yes &nbsp
+<input type="radio" name="comm" value="No" required>No &nbsp
+<br/>
+
+His training feedback should be good:
+<input type="radio" name="feed" value="Yes" required>Yes &nbsp
+<input type="radio" name="feed" value="No" required>No &nbsp
+<br/>
+
+Should be at-least 2years experienced:
+<input type="number" name="exp" required> &nbsp
+</br>
+
+Age should be greater than or equal to 23:
+<input type="number" name="ag" required> &nbsp
+</br>
+
+<input type="submit">
+</form>
+</body>
+</html>

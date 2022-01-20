@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+<meta charset="UTF-8">
+    <title> Responsive Registration Form </title>
+    <link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="formvalidation.js" ></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   
+<body>
+<p id="demo"></p>
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" id="userName" placeholder="Vijay@16" required>
+			<span id="usernameErrorMsg"></span>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" id="email" placeholder="abc@gmail.com" required autocomplete="off">
+			<span id="emailErrorMsg"></span>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="number" id="phone" placeholder="e.g. 999 999 9999" required>
+			<span id="phoneErrorMsg"></span>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" id="password" placeholder="Password" required>
+			<span id="passwordErrorMsg"></span>
+          </div>
+        </div>
+        
+        <div class="button">
+          <input type="submit" value="Register" >
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

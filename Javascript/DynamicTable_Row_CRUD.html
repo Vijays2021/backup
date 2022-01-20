@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Html CRUD with Pure JavaScript
+    </title>
+    <link rel="stylesheet" href="dynamicstyle.css">
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                    <div>
+                        <label>product Name*</label><label class="validation-error hide" id="productNameValidationError">This field is required.</label>
+                        <input type="text" name="productName" id="productName">
+                    </div>
+                    <div>
+                        <label>Product Id</label>
+                        <input type="text" name="productId" id="productId">
+                    </div>
+                    <div>
+                        <label>Price</label>
+                        <input type="text" name="price" id="price">
+                    </div>
+                    <div>
+                        <label>Category</label>
+                        <input type="text" name="category" id="category">
+                    </div>
+                    <div  class="form-action-buttons">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </td>
+            <td>
+                <table class="list" id="productList">
+                    <thead>
+                        <tr>
+                            <th>product Name</th>
+                            <th>Product Id</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="dynamictable.js"></script>
+</body>
+</html>

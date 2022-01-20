@@ -1,0 +1,99 @@
+String Methods
+
+// String Length property
+
+Example
+let txt = "Vijay";
+txt.length     // Returns 5
+
+//Extracting String 
+
+slice(start, end)
+substring(start, end)
+substr(start, length)
+
+The slice() Method // negative index, second parameter
+
+Example
+let str = "Vijay, Ajith, Vikram, Surya";
+str.slice(7, 13)     // Returns Ajith,
+str.slice(-13,-6)    // Returns Vikram,
+
+
+The substring() Method
+
+Example
+let str = "Vijay, Ajith, Vikram, Surya";
+substring(7, 13)    // Returns Ajith,
+
+The substr() Method
+
+Example
+let str = "Vijay, Ajith, Vikram, Surya";
+str.substr(7, 6)    // Returns Ajith,
+
+Replacing String Content
+
+Example
+let text = "Please visit Chennai!";
+let newText = text.replace("Chennai", "Guindy");
+
+
+Example// insensitive and global match
+let text = "Please visit Chennai and Chennai!";
+let newText = text.replace(/Chennai/ i g, "Guindy");
+
+Converting to Upper and Lower Case
+
+Example
+let text1 = "Hello team!";       // String
+let text2 = text1.toUpperCase();  // text2 is text1 converted to upper
+
+Example
+let text1 = "Hello team!";       // String
+let text2 = text1.toLowerCase();  // text2 is text1 converted to lower
+
+The concat() Method
+
+Example
+let text1 = "Hello";
+let text2 = "team";
+let text3 = text1.concat(" ", text2);
+
+String.trim()
+
+Example
+let text = "       Hello World!        ";
+text.trim()    // Returns "Hello World!"
+
+JavaScript String Padding
+
+Example
+let text = "6";
+text.padStart(4,0)    // Returns 0006
+
+Example
+let text = "6";
+text.padEnd(4,0)     // Returns 6000
+
+Extracting String Characters
+
+charAt(position)
+The charAt() Method
+
+Example
+let text = "HELLO WORLD";
+text.charAt(0)           // Returns H
+
+
+Converting a String to an Array
+
+Example
+text.split(",")          // Split on commas
+text.split(" ")          // Split on spaces
+text.split("|")          // Split on pipe
+
+If the separator is "", the returned array will be an array of single characters:
+
+Example
+text.split("")           // Split in characters
